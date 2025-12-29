@@ -1,0 +1,56 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "discogs-browser",
+  "title": "Discogs Browser",
+  "description": "It will search discogs.com for a music release information specified by Label ID, Barcode, Artist or Album name",
+  "icon": "extension-icon.png",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "search-text",
+      "title": "Search Releases",
+      "description": "Search Discogs releases by text",
+      "mode": "view"
+    },
+    {
+      "name": "search-catno",
+      "title": "Search by Catno",
+      "description": "Search Discogs releases by catalog number",
+      "mode": "view"
+    },
+    {
+      "name": "search-barcode",
+      "title": "Search by Barcode",
+      "description": "Search Discogs releases by barcode",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.103.0",
+    "@raycast/utils": "^2.2.1"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.4",
+    "@types/node": "22.13.10",
+    "@types/react": "19.0.10",
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "dev": "ray develop",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix",
+    "build": "ray build",
+    "publish": "npx @raycast/api@latest publish",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1"
+  },
+  "author": "gravisus",
+  "platforms": [
+    "Windows",
+    "macOS"
+  ],
+  "categories": [
+    "Web"
+  ]
+}
