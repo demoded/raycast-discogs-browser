@@ -8,19 +8,19 @@
   "commands": [
     {
       "name": "search-text",
-      "title": "Search Releases",
+      "title": "Discogs search for releases",
       "description": "Search Discogs releases by text",
       "mode": "view"
     },
     {
       "name": "search-catno",
-      "title": "Search by Catno",
+      "title": "Discogs search by catno",
       "description": "Search Discogs releases by catalog number",
       "mode": "view"
     },
     {
       "name": "search-barcode",
-      "title": "Search by Barcode",
+      "title": "Discogs search by barcode",
       "description": "Search Discogs releases by barcode",
       "mode": "view"
     }

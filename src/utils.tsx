@@ -1,7 +1,7 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import { DiscogsResult } from "./types";
 
-export function ReleaseItem({ r }: { r: DiscogsResult }): React.JSX.Element {
+export function ReleaseItem({ r }: { r: DiscogsResult }) {
   return (
     <List.Item
       title={r.title}
