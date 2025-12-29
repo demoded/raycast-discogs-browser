@@ -1,21 +1,12 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import { DiscogsResult } from "./types";
 
-export function ReleaseItem({ r }: { r: DiscogsResult }) {
+export function ReleaseItem({ r }: { r: DiscogsResult }): React.JSX.Element {
   return (
     <List.Item
-      key={r.id}
       title={r.title}
-      subtitle={[
-        r.year && String(r.year),
-        r.catno,
-        r.format?.join(", "),
-      ]
-        .filter(Boolean)
-        .join(" · ")}
-      accessories={[
-        ...(r.label ? [{ text: r.label.join(", ") }] : []),
-      ]}
+      subtitle={[r.year && String(r.year), r.catno, r.format?.join(", ")].filter(Boolean).join(" · ")}
+      accessories={[...(r.label ? [{ text: r.label.join(", ") }] : [])]}
       icon={r.cover_image}
       actions={
         <ActionPanel>

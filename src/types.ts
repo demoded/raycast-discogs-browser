@@ -10,3 +10,7 @@ export interface DiscogsResult {
   cover_image?: string;
   resource_url: string;
 }
+
+export interface DiscogsSearchResponse {
+  results: DiscogsResult[];
+}

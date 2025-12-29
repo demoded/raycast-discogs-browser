@@ -2,9 +2,10 @@ import { List } from "@raycast/api";
 import { useState } from "react";
 import { discogsSearch } from "./api";
 import { ReleaseItem } from "./utils";
+import { DiscogsResult } from "./types";
 
 export default function Command() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<DiscogsResult[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   async function onSearch(catno: string) {
@@ -18,7 +19,7 @@ export default function Command() {
   return (
     <List isLoading={isLoading} onSearchTextChange={onSearch} throttle searchBarPlaceholder="Catalog number…">
       {results.map((r) => (
-        <ReleaseItem r={r} />
+        <ReleaseItem key={r.id} r={r} />
       ))}
     </List>
   );
