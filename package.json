@@ -13,19 +13,19 @@
   "commands": [
     {
       "name": "search-text",
-      "title": "Discogs freetype search for releases",
+      "title": "Discogs Release Search",
       "description": "Search Discogs releases by text",
       "mode": "view"
     },
     {
       "name": "search-catno",
-      "title": "Discogs search by catalog(release) number",
-      "description": "Search Discogs releases by catalog number",
+      "title": "Discogs Search by Catalog Number",
+      "description": "Search Discogs releases by catalog(release) number",
       "mode": "view"
     },
     {
       "name": "search-barcode",
-      "title": "Discogs search by barcode",
+      "title": "Discogs Search by Barcode",
       "description": "Search Discogs releases by barcode",
       "mode": "view"
     }
