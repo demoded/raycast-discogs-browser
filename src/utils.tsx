@@ -66,6 +66,7 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
   const barcodes = release.barcode?.join(", ");
 
   const discogsUrl = detail?.uri ?? `https://www.discogs.com/release/${release.id}`;
+
   const rows = [
     { label: "Title", value: title },
     { label: "Year", value: year ? String(year) : undefined },
@@ -79,23 +80,35 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
     { label: "Discogs URL", value: discogsUrl, url: discogsUrl },
   ].filter((row): row is { label: string; value: string; url?: string } => Boolean(row.value));
 
+  const visibleRows = isLoading && !detail ? [] : rows;
+  const showEmptyState = visibleRows.length === 0;
+  const emptyTitle = isLoading ? "Loading release details" : "No details available";
+  const emptyDescription = isLoading
+    ? "Fetching release info from Discogs…"
+    : "Discogs did not provide extra metadata for this release.";
+  const sectionTitle = detail ? "Discogs Release Details" : "Release Overview";
+
   return (
     <List navigationTitle={`Details • ${title}`} searchBarPlaceholder="Filter release details" isLoading={isLoading}>
-      <List.Section title="Release Details">
-        {rows.map((row) => (
-          <List.Item
-            key={`${row.label}-${row.value}`}
-            title={row.label}
-            subtitle={row.value}
-            actions={
-              <ActionPanel>
-                <Action.CopyToClipboard title={`Copy ${row.label}`} content={row.value} />
-                {row.url && <Action.OpenInBrowser url={row.url} />}
-              </ActionPanel>
-            }
-          />
-        ))}
-      </List.Section>
+      {showEmptyState ? (
+        <List.EmptyView title={emptyTitle} description={emptyDescription} />
+      ) : (
+        <List.Section title={sectionTitle}>
+          {visibleRows.map((row) => (
+            <List.Item
+              key={`${row.label}-${row.value}`}
+              title={row.label}
+              subtitle={row.value}
+              actions={
+                <ActionPanel>
+                  <Action.CopyToClipboard title={`Copy ${row.label}`} content={row.value} />
+                  {row.url && <Action.OpenInBrowser url={row.url} />}
+                </ActionPanel>
+              }
+            />
+          ))}
+        </List.Section>
+      )}
     </List>
   );
 }
