@@ -5,16 +5,21 @@
   "description": "It will search discogs.com for a music release information specified by Label ID, Barcode, Artist or Album name",
   "icon": "extension-icon.png",
   "license": "MIT",
+  "author": "gravisus",
+  "platforms": [
+    "Windows",
+    "macOS"
+  ],
   "commands": [
     {
       "name": "search-text",
-      "title": "Discogs Search for Releases",
+      "title": "Discogs freetype search for releases",
       "description": "Search Discogs releases by text",
       "mode": "view"
     },
     {
       "name": "search-catno",
-      "title": "Discogs search by catno",
+      "title": "Discogs search by catalog(release) number",
       "description": "Search Discogs releases by catalog number",
       "mode": "view"
     },
@@ -45,11 +50,6 @@
     "publish": "npx @raycast/api@latest publish",
     "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1"
   },
-  "author": "gravisus",
-  "platforms": [
-    "Windows",
-    "macOS"
-  ],
   "categories": [
     "Web"
   ],

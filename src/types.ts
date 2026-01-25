@@ -19,17 +19,11 @@ export interface DiscogsResult {
 
 export interface DiscogsReleaseDetail {
   id: number;
-
   title: string;
-
   year?: number;
-
   released?: string;
-
   released_formatted?: string;
-
   country?: string;
-
   resource_url: string;
   uri?: string;
 }
