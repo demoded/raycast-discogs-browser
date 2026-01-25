@@ -1,4 +1,4 @@
-import { List } from "@raycast/api";
+import { List, Toast, showToast } from "@raycast/api";
 import { useState } from "react";
 import { discogsSearch } from "./api";
 import { ReleaseItem } from "./utils";
@@ -8,12 +8,27 @@ export default function Command() {
   const [results, setResults] = useState<DiscogsResult[]>([]);
   const [isLoading, setLoading] = useState(false);
 
-  async function onSearch(query: string) {
-    if (!query) return;
+  async function onSearch(rawQuery: string) {
+    const query = rawQuery.trim();
+    if (!query) {
+      setResults([]);
+      return;
+    }
+
     setLoading(true);
-    const data = await discogsSearch({ q: query, type: "release" });
-    setResults(data.results);
-    setLoading(false);
+
+    try {
+      const data = await discogsSearch({ q: query, type: "release" });
+      setResults(data.results);
+    } catch (error) {
+      await showToast({
+        style: Toast.Style.Failure,
+        title: "Discogs request failed",
+        message: error instanceof Error ? error.message : String(error),
+      });
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

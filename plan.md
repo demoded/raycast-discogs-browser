@@ -12,33 +12,29 @@ This is a Raycast extension for browsing the Discogs music database. It currentl
     *   `src/utils.tsx`: Shared UI components (e.g., `ReleaseItem`).
     *   `src/*.tsx`: Individual commands (`search-text`, `search-catno`, `search-barcode`).
 
-## Current Features
-*None*
-
 ## Development Strategy
 *   **Documentation:** Utilize Context7 MCP to access up-to-date documentation for:
-    *   **Raycast API:** `/websites/developers_raycast`, `/raycast/extensions`
-    *   **Discord:** `/websites/discord_js` (for integration features)
+*   **Raycast API:** `/websites/developers_raycast`, `/raycast/extensions`
+*   **Discord:** `/websites/discord_js` (for integration features)
+
+## Current Features
+- [x] Search releases by Catalog Number.
+- [x] Search releases by generic text query.
+- [x] Search releases by Barcode.
+- [x] List view results rendering.
 
 ## Development Roadmap
 
-### Phase 0: Core Implementation (To Fix)
-- [ ] Search releases by Catalog Number.
-- [ ] Search releases by generic text query.
-- [ ] Search releases by Barcode.
-- [ ] List view results rendering.
-
 ### Phase 1: Robustness & Configuration (Immediate Priority)
-- [ ] **Error Handling:** Implement `showToast` for API errors in all search commands to provide user feedback (e.g., network issues, rate limits).
-- [ ] **Authentication:** Add Raycast Preferences for Discogs Personal Access Token or Consumer Key/Secret to avoid strict rate limiting. Update `api.ts` to use these headers.
-- [ ] **Empty States:** Display a "No results found" message or view when search yields empty arrays.
+- [x] **Error Handling:** Implement `showToast` for API errors in all search commands to provide user feedback (e.g., network issues, rate limits).
+- [x] **Authentication:** Add Raycast Preferences for Discogs Personal Access Token or Consumer Key/Secret to avoid strict rate limiting. Update `api.ts` to use these headers.
 
 ### Phase 2: User Experience Improvements
-- [ ] **Release Details:** Create a `ReleaseDetail` view. When a user selects a list item, push a new view showing:
+- [x] **Release Details:** Create a `ReleaseDetail` view. When a user selects a list item, push a new view showing:
     -   Full Tracklist.
     -   Notes/Credits.
     -   Marketplace statistics (lowest price, etc.).
-- [ ] **Actions:** Add an Action Panel to list items:
+- [x] **Actions:** Add an Action Panel to list items:
     -   Open in Browser (Discogs URL).
     -   Copy Link.
     -   Copy Title/Artist.
