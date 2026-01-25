@@ -8,7 +8,7 @@
   "commands": [
     {
       "name": "search-text",
-      "title": "Discogs search for releases",
+      "title": "Discogs Search for Releases",
       "description": "Search Discogs releases by text",
       "mode": "view"
     },
@@ -52,5 +52,15 @@
   ],
   "categories": [
     "Web"
+  ],
+  "preferences": [
+    {
+      "name": "token",
+      "type": "password",
+      "required": true,
+      "title": "Discogs Personal Access Token",
+      "description": "Your Discogs Personal Access Token. You can generate one at https://www.discogs.com/settings/developers",
+      "placeholder": "Enter your token here"
+    }
   ]
 }
