@@ -63,7 +63,12 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
 
   const formats = release.format?.join(", ");
   const labels = release.label?.join(", ");
-  const barcodes = release.barcode?.join(", ");
+  const barcodeValues =
+    detail?.identifiers
+      ?.filter((identifier) => identifier.type?.toLowerCase() === "barcode")
+      .map((identifier) => identifier.value?.trim())
+      .filter((value): value is string => Boolean(value)) ?? [];
+  const barcodes = barcodeValues.length > 0 ? Array.from(new Set(barcodeValues)).join(", ") : undefined;
 
   const discogsUrl = detail?.uri ?? `https://www.discogs.com/release/${release.id}`;
 

@@ -16,6 +16,10 @@ export interface DiscogsResult {
  * Minimal subset of fields we care about when fetching a single release
  * via https://api.discogs.com/releases/:id.
  */
+export interface DiscogsIdentifier {
+  type?: string;
+  value?: string;
+}
 
 export interface DiscogsReleaseDetail {
   id: number;
@@ -26,6 +30,7 @@ export interface DiscogsReleaseDetail {
   country?: string;
   resource_url: string;
   uri?: string;
+  identifiers?: DiscogsIdentifier[];
 }
 
 export interface DiscogsSearchResponse {
