@@ -26,6 +26,17 @@ export interface DiscogsReleaseLabel {
   catno?: string;
 }
 
+export interface DiscogsReleaseArtist {
+  name?: string;
+  anv?: string;
+  join?: string;
+  role?: string;
+  tracks?: string;
+  id?: number;
+  resource_url?: string;
+  thumbnail_url?: string;
+}
+
 export interface DiscogsReleaseDetail {
   id: number;
   title: string;
@@ -37,6 +48,7 @@ export interface DiscogsReleaseDetail {
   uri?: string;
   identifiers?: DiscogsIdentifier[];
   labels?: DiscogsReleaseLabel[];
+  artists?: DiscogsReleaseArtist[];
 }
 
 export interface DiscogsSearchResponse {

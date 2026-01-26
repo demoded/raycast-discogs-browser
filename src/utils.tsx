@@ -69,6 +69,9 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
     primaryLabelName && primaryLabelCatno
       ? `${primaryLabelName} (${primaryLabelCatno})`
       : (primaryLabelName ?? release.label?.[0]);
+  const artistValues =
+    detail?.artists?.map((artist) => artist.name?.trim()).filter((value): value is string => Boolean(value)) ?? [];
+  const artists = artistValues.length > 0 ? Array.from(new Set(artistValues)).join(" · ") : undefined;
   const barcodeValues =
     detail?.identifiers
       ?.filter((identifier) => identifier.type?.toLowerCase() === "barcode")
@@ -80,6 +83,7 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
 
   const rows = [
     { label: "Title", value: title },
+    { label: "Artists", value: artists },
     { label: "Year", value: year ? String(year) : undefined },
     { label: "Release Date", value: releaseDate },
     { label: "Country", value: country },
