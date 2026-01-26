@@ -62,7 +62,13 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
   const title = detail?.title ?? release.title;
 
   const formats = release.format?.join(", ");
-  const labels = release.label?.join(", ");
+  const primaryLabelEntry = detail?.labels?.[0];
+  const primaryLabelName = primaryLabelEntry?.name?.trim();
+  const primaryLabelCatno = primaryLabelEntry?.catno?.trim();
+  const labels =
+    primaryLabelName && primaryLabelCatno
+      ? `${primaryLabelName} (${primaryLabelCatno})`
+      : (primaryLabelName ?? release.label?.[0]);
   const barcodeValues =
     detail?.identifiers
       ?.filter((identifier) => identifier.type?.toLowerCase() === "barcode")

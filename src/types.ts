@@ -21,6 +21,11 @@ export interface DiscogsIdentifier {
   value?: string;
 }
 
+export interface DiscogsReleaseLabel {
+  name?: string;
+  catno?: string;
+}
+
 export interface DiscogsReleaseDetail {
   id: number;
   title: string;
@@ -31,6 +36,7 @@ export interface DiscogsReleaseDetail {
   resource_url: string;
   uri?: string;
   identifiers?: DiscogsIdentifier[];
+  labels?: DiscogsReleaseLabel[];
 }
 
 export interface DiscogsSearchResponse {
