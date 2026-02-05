@@ -54,8 +54,14 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
     };
   }, [release.resource_url]);
 
-  const releaseDate = detail?.released_formatted ?? detail?.released;
+  const releaseDateSource = detail?.released_formatted ?? detail?.released;
+
+  const releaseDate =
+    releaseDateSource && !Number.isNaN(Date.parse(releaseDateSource))
+      ? new Date(releaseDateSource).toISOString().slice(0, 10)
+      : releaseDateSource;
   const year = detail?.year ?? release.year;
+
   const country = detail?.country ?? release.country;
   const catno = release.catno;
   const resourceUrl = detail?.resource_url ?? release.resource_url;
