@@ -78,6 +78,12 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
       .map((identifier) => identifier.value?.trim())
       .filter((value): value is string => Boolean(value)) ?? [];
   const barcodes = barcodeValues.length > 0 ? Array.from(new Set(barcodeValues)).join(", ") : undefined;
+  const genreValues =
+    detail?.genres?.map((genre) => genre?.trim()).filter((value): value is string => Boolean(value)) ?? [];
+  const genres = genreValues.length > 0 ? Array.from(new Set(genreValues)).join(", ") : undefined;
+  const styleValues =
+    detail?.styles?.map((style) => style?.trim()).filter((value): value is string => Boolean(value)) ?? [];
+  const styles = styleValues.length > 0 ? Array.from(new Set(styleValues)).join(", ") : undefined;
 
   const discogsUrl = detail?.uri ?? `https://www.discogs.com/release/${release.id}`;
 
@@ -90,6 +96,8 @@ export function ReleaseDetail({ release }: { release: DiscogsResult }) {
     { label: "Catalog Number", value: catno },
     { label: "Formats", value: formats },
     { label: "Labels", value: labels },
+    { label: "Genres", value: genres },
+    { label: "Styles", value: styles },
     { label: "Barcodes", value: barcodes },
     { label: "Resource URL", value: resourceUrl, url: resourceUrl },
     { label: "Discogs URL", value: discogsUrl, url: discogsUrl },

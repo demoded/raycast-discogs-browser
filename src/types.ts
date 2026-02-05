@@ -48,6 +48,8 @@ export interface DiscogsReleaseDetail {
   uri?: string;
   identifiers?: DiscogsIdentifier[];
   labels?: DiscogsReleaseLabel[];
+  genres?: string[];
+  styles?: string[];
   artists?: DiscogsReleaseArtist[];
 }
 
